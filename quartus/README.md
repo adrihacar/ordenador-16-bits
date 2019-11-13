@@ -1,4 +1,4 @@
 
-# CAUTION! This folder is important to not be modified if not used quartus, except you know what are you doing!
+# CAUTION! Esta carpeta es importante que no sea modificada sin usar quartus prime, ya que contiene los proyectos de quartus. 
 
-In this file, will be stored all quartus projects, including on for testing only, and one for the project.
+
