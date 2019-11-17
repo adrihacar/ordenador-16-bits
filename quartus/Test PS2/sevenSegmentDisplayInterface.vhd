@@ -7,6 +7,8 @@
 --The code has been tested for the Cyclone IV (EP4CE6E22C8N)
 --
 --Based on the explanations form: https://www.fpga4student.com/2017/09/vhdl-code-for-seven-segment-display.html
+--
+--The code is for the 16Bit computer, by Pablo Rivero Lazaro
 library IEEE;
 use IEEE.std_logic_1164.all;
 use IEEE.std_logic_unsigned.ALL;
