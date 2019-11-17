@@ -1,8 +1,17 @@
+--Test Ps2 port, for reading the keyboard input
+--
+--This program uses the ps2Interface and the sevenSegmentDisplayInterface entities to display in the
+--seven segment display the hex code recived, the program also sends the code recived in binary form
+--through paralel comunication to an arduino to later processing the data recived. The program also
+--do this because there are occasions where the speed of the hex codes recived is faster than the
+--posibilities to be readed on the segment display, so they are processed and printed to the serial
+--monitor by an arduino.
+--
+--The code has been tested for the Cyclone IV (EP4CE6E22C8N)
+--
+--The code is for the 16Bit computer, by Pablo Rivero Lazaro
 library IEEE;
 use IEEE.std_logic_1164.all;
---library work;
---use work.ps2Interface.all;
---use work.sevenSegmentDisplayInterface.all;
 
 entity TestPS2 is
 	generic (
@@ -25,7 +34,10 @@ entity TestPS2 is
 
 		--Indicator lights
 		valid_flag: out std_logic;
-		error_flag: out std_logic
+		error_flag: out std_logic;
+
+		--Data output for arduino testing
+		data_out: out std_logic_vector(7 downto 0)
 	);
 end TestPS2;
 
@@ -73,12 +85,14 @@ begin
 			error_flag <= '0';
 			valid_flag <= '0';
 			recived_data <= (others => '0');
+			data_out <= (others => '0');
 
 		elsif rising_edge(clk) then
 			if ps2_data_valid = '1' then --The data is valid
 				error_flag <= '0';
 				valid_flag <= '1';
 				recived_data <= "00000000" & ps2_parsed_data;
+				data_out <= ps2_parsed_data;
 
 			end if;
 			if ps2_data_error = '1' then --The data has an error
