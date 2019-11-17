@@ -7,6 +7,8 @@
 --The code has been tested for the Cyclone IV (EP4CE6E22C8N)
 --
 --Based loosely on ps2_intf.vhd and UK101keyboard.vhd form the MultiComp project: https://github.com/douggilliland/MultiComp
+--
+--The code is for the 16Bit computer, by Pablo Rivero Lazaro
 library IEEE;
 use IEEE.std_logic_1164.all;
 use IEEE.std_logic_arith.ALL;
